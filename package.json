@@ -1,0 +1,14 @@
+{
+  "name": "moysklad-telegram-bot",
+  "version": "1.0.0",
+  "description": "Локальный сервер: опрос MoySklad API + отправка сводки в Telegram",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.2",
+    "dotenv": "^16.4.5",
+    "node-cron": "^3.0.3"
+  }
+}
