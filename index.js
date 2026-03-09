@@ -282,7 +282,8 @@ async function runDailySummary() {
 //  ПЛАНИРОВЩИК
 // ─────────────────────────────────────────────
 
-const cronExpr = `0 ${SCHEDULE_HOURS.join(",")} * * *`;
+// Формат с секундами: секунды минуты часы день месяц день_недели
+const cronExpr = `30 0 ${SCHEDULE_HOURS.join(",")} * * *`;
 
 console.log("===========================================");
 console.log(" MoySklad -> Telegram бот запущен");
@@ -293,11 +294,11 @@ console.log("===========================================");
 
 validateIds().catch((e) => console.error("Ошибка валидации:", e.message));
 
-// Обычные часовые сообщения
+// Обычные часовые сообщения (в hh:00:30)
 cron.schedule(cronExpr, () => { runTask(); });
 
-// Итоговое сообщение каждую ночь в 00:15
-cron.schedule("15 0 * * *", () => { runDailySummary(); });
+// Итоговое сообщение каждую ночь в 00:15:30
+cron.schedule("30 15 0 * * *", () => { runDailySummary(); });
 
 // Тестовый запуск — раскомментируйте нужную строку:
 // runTask();
